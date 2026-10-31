@@ -174,8 +174,13 @@ public class CustomerPortalServiceImpl implements CustomerPortalService {
 
         if (monthlyPlan != null && erpProd != null) {
             LocalDate today = LocalDate.now();
+            String demoNumber = "SUB-" + today.getYear() + "-D" + String.format("%05d", customer.getId());
+            int suffix = 1;
+            while (subscriptionRepository.existsBySubscriptionNumber(demoNumber)) {
+                demoNumber = "SUB-" + today.getYear() + "-D" + String.format("%05d", customer.getId()) + "-" + suffix++;
+            }
             Subscription sub = Subscription.builder()
-                    .subscriptionNumber("SUB-2026-10001")
+                    .subscriptionNumber(demoNumber)
                     .customer(customer)
                     .plan(monthlyPlan)
                     .status(SubscriptionStatus.ACTIVE)
