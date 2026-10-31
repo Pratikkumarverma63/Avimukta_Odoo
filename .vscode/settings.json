@@ -1,0 +1,10 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "chat.tools.terminal.autoApprove": {
+        "/^pwd && find \\. -maxdepth 4 -type f \\| sort \\| sed -n '1,200p' && printf '\\\\nJava/build markers:\\\\n' && find \\. -maxdepth 5 \\\\\\( -name pom\\.xml -o -name build\\.gradle -o -name build\\.gradle\\.kts -o -name Dockerfile -o -name '\\*\\.yml' -o -name '\\*\\.yaml' -o -name '\\*\\.properties' \\\\\\) -type f -print$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
