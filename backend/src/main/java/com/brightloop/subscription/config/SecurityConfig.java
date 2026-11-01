@@ -88,6 +88,8 @@ public class SecurityConfig {
             .filter(origin -> !origin.isBlank())
             .collect(java.util.stream.Collectors.toCollection(java.util.ArrayList::new));
         origins.add("https://*.netlify.app");
+        origins.add("https://*.vercel.app");
+        origins.add("https://*.tmp.now");
         origins.add("http://localhost:*");
         origins.add("http://127.0.0.1:*");
         origins.add("http://192.168.*:*");
