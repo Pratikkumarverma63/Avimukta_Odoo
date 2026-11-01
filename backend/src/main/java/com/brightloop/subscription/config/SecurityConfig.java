@@ -86,7 +86,11 @@ public class SecurityConfig {
         List<String> origins = Arrays.stream(allowedOrigins.split(","))
             .map(String::trim)
             .filter(origin -> !origin.isBlank())
-            .toList();
+            .collect(java.util.stream.Collectors.toCollection(java.util.ArrayList::new));
+        origins.add("https://*.netlify.app");
+        origins.add("http://localhost:*");
+        origins.add("http://127.0.0.1:*");
+        origins.add("http://192.168.*:*");
         configuration.setAllowedOriginPatterns(origins);
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
